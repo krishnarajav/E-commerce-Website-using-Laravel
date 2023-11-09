@@ -1,2 +1,2 @@
 # Laravel_PHP_Framework
-Website using HTML, CSS, JavaScript, Laravel (PHP Framework)
+Website using Laravel (PHP Framework)
