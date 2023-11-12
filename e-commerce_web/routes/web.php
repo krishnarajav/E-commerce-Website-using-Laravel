@@ -24,22 +24,27 @@ Route::get('/registration', [AuthManager::class, 'registration'])->name('registr
 Route::post('/registration', [AuthManager::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout', [AuthManager::class, 'logout'])->name('logout');
 
-Route::get('/menu', function () {
-    return view('.include.menu');
-})->name('menu');
+Route::get('/store', function () {
+    return view('.include.store.store');
+})->name('store');
 
-Route::get('/orders', function () {
-    return view('include.orders');
-})->middleware('auth.check')->name('orders');
+Route::get('/cart', function () {
+    return view('include.cart.cart');
+})->middleware('auth.check')->name('cart');
 
 Route::get('/about', function () {
-    return view('.include.about');
+    return view('.include.about.about');
 })->name('about');
 
 Route::get('/contact', function () {
-    return view('.include.contact');
+    return view('.include.contact.contact');
 })->name('contact');
 
+Route::get('/contact/writeamessage', function () {
+    return view('.include.contact.writemessage');
+})->name('writemessage');
+
 Route::get('/explore', function () {
-    return view('.include.explore');
+    return view('.include.explore.explore');
 })->name('explore');
+

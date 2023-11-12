@@ -16,7 +16,7 @@
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="text" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                    <input type="text" placeholder="Email" name="email" required>
                 </div>
                 <div class="input-box">
                     <span class="icon">

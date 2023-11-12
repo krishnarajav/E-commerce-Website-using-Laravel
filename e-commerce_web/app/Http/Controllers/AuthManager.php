@@ -27,8 +27,7 @@ class AuthManager extends Controller
 
     function loginPost(Request $request) {
         $credentials  = $request->only('email', 'password');
-        $remember = $request->has('remember');
-        if(Auth::attempt($credentials, $remember)) {
+        if(Auth::attempt($credentials)) {
             return redirect()->intended(route('homepage'));
         }
         return redirect(route('login'))->with('error', 'Login details are not valid.');

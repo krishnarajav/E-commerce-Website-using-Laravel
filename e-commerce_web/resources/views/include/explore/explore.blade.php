@@ -17,7 +17,7 @@
             <a class="nav" href="{{route('store')}}">Store</a>
             <a class="nav" href="{{route('cart')}}">Cart</a>
             <a class="nav" href="{{route('about')}}">About</a>
-            <a class="nav" href="{{route('contact')}}">Contact</a> 
+            <a class="nav" href="{{route('contact')}}">Contact</a>
             @auth
                 <div class="user-icon">
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
@@ -36,18 +36,6 @@
         </nav>
     </header>
 
-    @section('content')
-        <div class="container">
-            <h1>Welcome to Jackfruit Mania!</h1>
-            <p class="text">Jackfruit is a unique tropical fruit that has increased in popularity in recent years. It has a distinctive sweet flavor and can be used to make a wide variety of dishes. It’s also very nutritious and have several health benefits.  And here we are proud to introduce our products based on jackfruit.Whether you're looking for a meat alternative or a flavorful addition to your meals, our jackfruit products are the perfect solution. Embrace the tropical goodness and explore our innovative jackfruit-based treats today!
-            </p>
-            <a href="{{route('explore')}}"><button class="btnExplore-popup">Explore</button></a>
-        </div>
-    @show
-    
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <h1>Explore</h1>
 </body>
-
 </html>
