@@ -70,4 +70,5 @@ class Kernel extends HttpKernel
         // ... other middleware entries
         'auth.check' => \App\Http\Middleware\AuthCheck::class,
     ];
+
 }

@@ -22,7 +22,7 @@
         
         .address-card {
             width: 650px;
-            height: 440px;
+            height: 470px;
         }
 
         h2.heading {
@@ -80,10 +80,16 @@
             text-decoration: none;
         }
 
+        .sent .alert.alert-sent {
+            position: relative;
+            top: 50px;
+            text-align: center;
+            color: #008000;
+        }
+
         .message-form {
             width: 800px;
             height: 560px;
-
         }
 
         h2.heading2 {
@@ -149,21 +155,22 @@
             border-radius: 6px;
             cursor: pointer;
             color: #ffffff;
-            font-size: 1.1em    ;
+            font-size: 1.1em;
             font-weight: 600;
             text-decoration: none;
        }
-        
     </style>
 </head>
 
 <body>
     <header>
-        <h2 class="logo">Logo</h2>
+        <a class="logo" href="{{route('homepage')}}">
+            <img src="{{asset('images/logo.png')}}" alt="logo" class="img-logo">
+        </a>
         <nav class="navigation">
             <a class="nav" href="{{route('homepage')}}">Home</a>
             <a class="nav" href="{{route('store')}}">Store</a>
-            <a class="nav" href="{{route('cart')}}">Cart</a>
+            <a class="nav" href="{{route('cartview')}}">Cart</a>
             <a class="nav" href="{{route('about')}}">About</a>
             <a class="nav" href="{{route('contact')}}">Contact</a>  
             @auth
@@ -171,10 +178,11 @@
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <a href="#">My Account</a>
-                            <a href="#">Addresses</a>
-                            <a href="#">Orders</a>
+                            <a href="{{route('myaccount')}}">My Account</a>
+                            <a href="{{route('addresses')}}">Addresses</a>
+                            <a href="{{route('orders')}}">Orders</a>
                             <a href="{{route('logout')}}">Logout</a>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -193,13 +201,18 @@
             <div class="address-type"><label>ADDRESS</label>
                 <div class="address-detail">Jackfruit Mania Shop 98 - 99, Kulshekar, Mangalore, Karnataka 575005</div>
             </div>
-            <div class="address-type"><label>EMAIL</label>
-                <div class="address-detail">jackfruitmania@gmail.com</div>
-            </div>
             <div class="address-type"><label>PHONE</label>
                 <div class="address-detail">+919745354535</div>
             </div>
+            <div class="address-type"><label>EMAIL</label>
+                <div class="address-detail">jackfruitmania@gmail.com</div>
+            </div>
             <a class="message-btn" href="{{route('writemessage')}}">Write a Message</a>
+            <div class="sent">
+                @if(session()->has('success'))
+                    <div class="alert alert-sent">{{session('success')}}</div>
+                @endif
+            </div>
         </div>
     @show
     </div>
