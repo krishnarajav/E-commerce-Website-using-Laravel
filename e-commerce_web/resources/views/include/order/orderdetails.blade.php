@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Store')</title>
+    <title>@yield('title', 'Checkout - Jackfruit Mania')</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <style>
         .user-back {
@@ -117,7 +117,7 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             margin: 30px auto 15px; 
         }
@@ -127,7 +127,7 @@
         }
 
         .order-btn p:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
     </style>
@@ -149,11 +149,10 @@
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <a href="{{route('myaccount')}}">My Account</a>
+                            <a href="{{route('myaccount')}}">Account</a>
                             <a href="{{route('addresses')}}">Addresses</a>
                             <a href="{{route('orders')}}">Orders</a>
                             <a href="{{route('logout')}}">Logout</a>
-                        </div>
                         </div>
                     </div>
                 </div>

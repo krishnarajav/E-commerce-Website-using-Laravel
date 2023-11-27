@@ -21,10 +21,11 @@ class Order extends Model
         'product_id',
         'product_name',
         'quantity',
-        'price',
+        'subtotal',
         'total_amount',
         'payment_method',
         'order_id',
+        'delivery_status',
     ];
 
     public function user()

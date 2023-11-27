@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Store')</title>
+    <title>@yield('title', 'Store - Jackfruit Mania')</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <style>
         .whiteback {
-            background: #ffffff;
+            background: #fff;
             position: relative;
             width: 90%;
             margin: auto 0;
@@ -133,7 +133,7 @@
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <a href="{{route('myaccount')}}">My Account</a>
+                            <a href="{{route('myaccount')}}">Account</a>
                             <a href="{{route('addresses')}}">Addresses</a>
                             <a href="{{route('orders')}}">Orders</a>
                             <a href="{{route('logout')}}">Logout</a>
@@ -172,7 +172,7 @@
                 <img class="product-image" src="{{asset('images/2-1.png')}}" alt="Product 2">
                 <div class="product-rating">★4.5</div>
                 <div class="name-tile">
-                    <div class="product-title">Jackfruit in BBQ Sauce (1L)</div>
+                    <div class="product-title">Jackfruit in BBQ Sauce (0.5L)</div>
                     <div class="product-price">₹300.00</div>
                     <form action="{{ route('cart') }}" method="post">
                         <input type="hidden" name="product_id" value="2">
@@ -188,7 +188,7 @@
                 <div class="product-rating">★4.3</div>
                 <div class="name-tile">
                     <div class="product-title">Jackfruit - Taste of Tropics(1kg)</div>
-                    <div class="product-price">₹250.00</div>
+                    <div class="product-price">₹325.00</div>
                     <form action="{{ route('cart') }}" method="post">
                         <input type="hidden" name="product_id" value="3">
                         @csrf

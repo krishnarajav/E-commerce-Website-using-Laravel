@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Store')</title>
+    <title>@yield('title', $product->name. ' (view-details) - Jackfruit Mania')</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <style>
         .whiteback {
@@ -56,12 +56,13 @@
             position: relative;
             width: 50px;
             height: 25px;
-            background: #0070aa;
-            color: #fff;
+            background: #008000;
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 5px;
+            user-select: none;
         }
 
         .viewproduct-info p.viewprice {
@@ -73,6 +74,7 @@
             margin-top: 30px;
             margin-right: 50px;
             font-size: 18px;
+            text-align: justify;
         }
 
         .viewaction-buttons {
@@ -102,11 +104,12 @@
         }
 
         .viewaction-buttons button p:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .viewratings-reviews {
             margin-top: 30px;
+            user-select: none;
         }
 
         .viewratings-reviews h2 {
@@ -185,7 +188,7 @@
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <a href="{{route('myaccount')}}">My Account</a>
+                            <a href="{{route('myaccount')}}">Account</a>
                             <a href="{{route('addresses')}}">Addresses</a>
                             <a href="{{route('orders')}}">Orders</a>
                             <a href="{{route('logout')}}">Logout</a>

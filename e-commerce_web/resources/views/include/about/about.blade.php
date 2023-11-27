@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'About')</title>
+    <title>@yield('title', 'About - Jackfruit Mania')</title>
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <style>
         .back {
-            background: linear-gradient(to bottom, #ffffff, #ffffff, #b5ffb8);
+            background: linear-gradient(to bottom, #eee, #eee, #c3ffc5);
             position: relative;
-            width: 1350px;
-            padding: 0 150px;
+            width: 90%;
             justify-content: space-around;
             align-items: center;
             overflow: hidden;
+        }
+
+        .matter {
+            padding: 0 150px;
         }
 
         .about-us {
@@ -52,11 +55,9 @@
         }
 
         .foot-back {
-            position: relative;
-            right: 150px;
             margin-top: 30px; 
-            background: #234120;
-            width: 1350px;
+            background: #2d3829;
+            width: 100%;
             text-align: center;
             padding: 20px;
         }
@@ -79,7 +80,7 @@
                     <img src="{{asset('images/person.svg')}}" alt="User Icon" class="person-icon">
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <a href="{{route('myaccount')}}">My Account</a>
+                            <a href="{{route('myaccount')}}">Account</a>
                             <a href="{{route('addresses')}}">Addresses</a>
                             <a href="{{route('orders')}}">Orders</a>
                             <a href="{{route('logout')}}">Logout</a>
@@ -95,42 +96,44 @@
 
     <div class="blur-background"></div>
     <div class="back">
-        <h1 class="about-us">ABOUT US</h1>
-        <div class="about">
-            <img src="{{asset('images/jackfruitmania.png')}}" alt="jackfruitmania" class="about-img">
-            <div class="about-div">
-                <p style="max-width: 520px; font-size: 24px; font-weight: bold; color: #333;">Welcome to Jackfruit Mania – Your Ultimate Destination for Premium Jackfruit Products!<br><br></p>
-                <p class="about-p1">Jackfruit Mania, we bring the goodness of nature to your doorstep with a diverse range of high-quality jackfruit products. As a dedicated ecommerce platform, we take pride in offering a unique selection of delicious and nutritious items crafted from the finest jackfruit.
-                <br><br>
-                <strong>Our Story:</strong>
-                Inspired by the rich heritage and incredible versatility of jackfruit, Jackfruit Mania was born out of a passion for providing healthy and tasty alternatives to consumers. We believe in the power of this tropical superfood and aim to share its wonders with the world.
-                </p>
+        <div class="matter">
+            <h1 class="about-us">ABOUT US</h1>
+            <div class="about">
+                <img src="{{asset('images/jackfruitmania.png')}}" alt="jackfruitmania" class="about-img">
+                <div class="about-div">
+                    <p style="max-width: 520px; font-size: 24px; font-weight: bold; color: #333;">Welcome to Jackfruit Mania – Your Ultimate Destination for Premium Jackfruit Products!<br><br></p>
+                    <p class="about-p1">Jackfruit Mania, we bring the goodness of nature to your doorstep with a diverse range of high-quality jackfruit products. As a dedicated ecommerce platform, we take pride in offering a unique selection of delicious and nutritious items crafted from the finest jackfruit.
+                    <br><br>
+                    <strong>Our Story:</strong>
+                    Inspired by the rich heritage and incredible versatility of jackfruit, Jackfruit Mania was born out of a passion for providing healthy and tasty alternatives to consumers. We believe in the power of this tropical superfood and aim to share its wonders with the world.
+                    </p>
+                </div>
             </div>
+                
+            <p class="about-p2"> <strong>What Sets Us Apart:</strong><br><br>
+                
+                <strong>Premium Quality:</strong> We source the freshest jackfruits from trusted growers to ensure that our products meet the highest quality standards. From jackfruit chips to gourmet jackfruit preserves, each item is crafted with care and precision.<br><br>
+                
+                <strong>Diverse Range:</strong> Explore our extensive collection that goes beyond the conventional. Indulge in the unique flavors and textures of jackfruit in various forms – from exotic snacks to delectable spreads.<br><br>
+                
+                <strong>Nutrient-Rich Goodness:</strong> Jackfruit is not just delicious; it's also packed with essential nutrients. We are committed to promoting a healthier lifestyle by offering wholesome jackfruit products that contribute to your well-being.<br><br>
+                
+                <strong>Sustainability:</strong> We are dedicated to eco-friendly practices. Our packaging is designed with sustainability in mind, minimizing our environmental impact and ensuring that your love for jackfruit is not only good for you but also for the planet.<br><br>
+                
+                <strong>Customer Satisfaction:</strong> Your satisfaction is our priority. Whether you're a jackfruit enthusiast or a curious foodie, we strive to exceed your expectations with prompt delivery, secure transactions, and responsive customer support.<br><br>
+                
+                Explore the world of jackfruit like never before at Jackfruit Mania. Join us on a culinary journey that celebrates the richness and diversity of this tropical gem. Indulge your taste buds, nourish your body, and embrace the joy of discovering jackfruit wonders – all with a click of a button.<br><br>
+                
+                <strong>Jackfruit Mania – Where Taste Meets Wholesome Goodness!</strong>
+            </p>
         </div>
-            
-        <p class="about-p2"> <strong>What Sets Us Apart:</strong><br><br>
-            
-            <strong>Premium Quality:</strong> We source the freshest jackfruits from trusted growers to ensure that our products meet the highest quality standards. From jackfruit chips to gourmet jackfruit preserves, each item is crafted with care and precision.<br><br>
-            
-            <strong>Diverse Range:</strong> Explore our extensive collection that goes beyond the conventional. Indulge in the unique flavors and textures of jackfruit in various forms – from exotic snacks to delectable spreads.<br><br>
-            
-            <strong>Nutrient-Rich Goodness:</strong> Jackfruit is not just delicious; it's also packed with essential nutrients. We are committed to promoting a healthier lifestyle by offering wholesome jackfruit products that contribute to your well-being.<br><br>
-            
-            <strong>Sustainability:</strong> We are dedicated to eco-friendly practices. Our packaging is designed with sustainability in mind, minimizing our environmental impact and ensuring that your love for jackfruit is not only good for you but also for the planet.<br><br>
-            
-            <strong>Customer Satisfaction:</strong> Your satisfaction is our priority. Whether you're a jackfruit enthusiast or a curious foodie, we strive to exceed your expectations with prompt delivery, secure transactions, and responsive customer support.<br><br>
-            
-            Explore the world of jackfruit like never before at Jackfruit Mania. Join us on a culinary journey that celebrates the richness and diversity of this tropical gem. Indulge your taste buds, nourish your body, and embrace the joy of discovering jackfruit wonders – all with a click of a button.<br><br>
-            
-            <strong>Jackfruit Mania – Where Taste Meets Wholesome Goodness!</strong>
-        </p>
         <div class="foot-back">
             <a styke="text-decoration: none; height: 50px;" href="{{route('homepage')}}">
                 <img src="{{asset('images/logo.png')}}" alt="logo" style="height: 60px;">
             </a>
             <address style="font-style: italic; margin-top: 20px; color: #ccc;">
-                Jackfruit Mania Shop 98 - 99, Kulshekar, Mangalore, Karnataka 575005<br>
-                Phone: +919745354535<br>
+                Jackfruit Mania, Shop 98, Kulshekar, Mangalore, Karnataka 575005<br>
+                Phone: +919879879879<br>
                 Email: jackfruitmania@gmail.com
             </address>
             <div style="margin-bottom: 20px;">

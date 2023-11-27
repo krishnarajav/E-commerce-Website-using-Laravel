@@ -1,5 +1,5 @@
 @extends('.include.contact.contact')
-@section('title', 'Contact Us')
+@section('title', 'Contact Us - Jackfruit Mania')
 @section('addressform')
 <!--Message Form-->
 <form action="{{route('writemessage.post')}}" method="POST" class="message-form">

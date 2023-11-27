@@ -11,6 +11,7 @@ class OrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->string('order_id');
             $table->string('name');
             $table->string('phone');
             $table->string('email');
@@ -19,7 +20,12 @@ class OrdersTable extends Migration
             $table->string('state');
             $table->string('pin');
             $table->string('payment_method')->nullable();
-            $table->string('order_id')->unique();
+            $table->string('product_id')->nullable();
+            $table->string('product_name')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->decimal('subtotal', 8, 2)->nullable();
+            $table->decimal('total_amount', 8, 2)->nullable();
+            $table->string('delivery_status')->nullable();
             $table->timestamps();
         });
     }

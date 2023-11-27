@@ -1,5 +1,5 @@
 @extends('homepage')
-@section('title', 'My Account')
+@section('title', 'My Account - Jackfruit Mania')
 @section('content')
 <style>
     .user-back {
@@ -59,10 +59,11 @@
     }
 
     .successfulchange {
+        margin-top: 20px;
         justify-content: center;
         text-align: center;
         color: #008000;
-        }
+    }
 
     .password-manage {
         margin-top: 40px;
@@ -123,6 +124,11 @@
 <div class="user-back">
     <div class="user-myaccount">
         <h2 class="heading">My Account Details</h2>
+
+        @if(session()->has('success'))
+            <div class="successfulchange">{{session('success')}}</div>
+        @endif
+
         <form method="POST" action="{{ route('myaccount.post')}}">
         @csrf
         @method('PUT')
@@ -135,10 +141,6 @@
             <div class="detail-type"><label>E-mail</label>
                 <input type="text" class="user-detail" value="{{auth()->user()->email}}" name="email" required>
             </div>
-
-            @if(session()->has('success'))
-                <div class="successfulchange">{{session('success')}}</div>
-            @endif
             
             <div class="password-manage">
                 <h2 class="password-change">Password Change</h2>
@@ -161,6 +163,7 @@
                     <input type="password" placeholder="Re-enter New Password" name="password_confirmation">
                 </div>
             </div>
+
             <button type="submit" class="user-btn">Save Preferences</button>
         </form>
     </div>

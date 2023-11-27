@@ -22,7 +22,7 @@ class ProductsTableSeeder extends Seeder
 
         //Product 2
         Product::create([
-            'name' => 'Jackfruit in BBQ Sauce (1L)',
+            'name' => 'Jackfruit in BBQ Sauce (0.5L)',
             'description' => 'Experience the savory fusion of sweet and smoky with our Jackfruit in BBQ Sauce (1L). Harvested at peak ripeness, the tender jackfruit absorbs the rich, tangy barbecue flavors, creating a deliciously wholesome and meaty alternative. Perfect for plant-based enthusiasts and barbecue lovers alike, this versatile 1-liter jar offers a convenient and mouthwatering solution for sandwiches, tacos, or bowls. Elevate your culinary experience with the natural goodness of jackfruit, slow-cooked to perfection and generously coated in our signature BBQ sauce. Delight in a cruelty-free, flavor-packed meal is ready to impress.',
             'price' => 300.00,
             'image1' => 'images/2-1.png',
@@ -34,7 +34,7 @@ class ProductsTableSeeder extends Seeder
         Product::create([
             'name' => 'Jackfruit - Taste of Tropics (1kg)',
             'description' => 'Savor the exotic allure of the tropics with our 1kg pack of Jackfruit - Taste of the Tropics. Harvested at the peak of ripeness, each golden-hued, succulent piece encapsulates the sweet and fragrant essence of tropical paradise. Versatile and nutritious, our jackfruit is a culinary canvas, perfect for both sweet and savory creations. Whether added to smoothies, desserts, or savory dishes, this 1kg pack promises a taste adventure that transports you to sun-kissed orchards with every delicious bite. Immerse yourself in the luscious flavors of the tropics, brought to your kitchen in a convenient and generous package.',
-            'price' => 250.00,
+            'price' => 325.00,
             'image1' => 'images/3-1.png',
             'image2' => 'images/3-2.png',
             'rating' => 4.3,

@@ -1,5 +1,5 @@
 @extends('homepage')
-@section('title', 'My Account')
+@section('title', 'My Orders - Jackfruit Mania')
 @section('content')
 <style>
     .user-back {
@@ -53,10 +53,26 @@
     <div class="user-myorders">
         <h2 class="heading">My Orders</h2>  
         <div class="order-details">
+            @php
+                $prevOrderId = null;
+                $orderTimestamps = [];
+            @endphp
+            
             @foreach ($orders as $order)
-                <a href="#" style="text-decoration: none;"><p style="font-weight: bold; color: #333; padding-top: 30px;">Order ID: {{ $order->order_id }}</p></a>
-                <p style="padding-top: 5px; color: #444;">Order Placed At: {{ $order->created_at }}</p>
-            @endforeach  
+                @if ($order->order_id !== $prevOrderId)
+                    @php
+                        $prevOrderId = $order->order_id;
+                        $orderTimestamps[$order->order_id] = $order->created_at;
+                    @endphp
+                @endif
+            @endforeach
+            
+            @foreach ($orderTimestamps as $orderId => $timestamp)
+                <a href="#" style="text-decoration: none;">
+                    <p style="font-weight: bold; color: #333; padding-top: 30px;">Order ID: {{ $orderId }}</p>
+                </a>
+                <p style="padding-top: 5px; color: #444;">Order Placed At: {{ $timestamp }}</p>
+            @endforeach
         </div>
     </div>
 </div>

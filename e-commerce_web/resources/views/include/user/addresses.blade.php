@@ -1,5 +1,5 @@
 @extends('homepage')
-@section('title', 'My Account')
+@section('title', 'My Addresses - Jackfruit Mania')
 @section('content')
 <style>
     .user-back {
@@ -41,12 +41,16 @@
     <div class="user-myaddresses">
         <h2 class="heading">My Addresses</h2>    
         <div class="address-details">
-            @foreach ($orders as $address)
+            @php
+                $uniqueAddresses = $orders->unique('address');
+            @endphp
+
+            @foreach ($uniqueAddresses as $address)
                 <p style="padding-top: 30px;">{{ $address->name }}</p>
                 <p style="padding-top: 5px;">{{ $address->phone }}</p>
                 <p style="padding-top: 5px;">{{ $address->address }}</p>
                 <p style="padding-top: 5px;">{{ $address->city }}, {{ $address->state }} - {{ $address->pin }}</p>
-            @endforeach  
+            @endforeach
         </div>
     </div>
 </div>

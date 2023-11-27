@@ -43,7 +43,7 @@ class AppManager extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
+            'password' => 'required|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -101,22 +101,18 @@ class AppManager extends Controller
 
     public function cart(Request $request)
     {
-        // Find the product
         $product = Product::find($request->input('product_id'));
-        // Find the current user
         $user = Auth::user();
 
-        // Find an existing cart item for the current user and the specified product
         $cartItem = CartItem::where([
             'user_id' => $user->id,
             'product_id' => $product->id,
         ])->first();
 
         if ($cartItem) {
-            // If the item already exists, increment the quantity
             $cartItem->increment('quantity', $request->input('quantity', 1));
-        } else {
-            // If the item doesn't exist, create a new cart item
+        } 
+        else {
             $cartItem = CartItem::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
@@ -125,14 +121,12 @@ class AppManager extends Controller
                 'user_email' => $user->email,
                 'product_name' => $product->name,
                 'product_price' => $product->price,
-                'product_image' => $product->image1, // Adjust this based on your product image logic
+                'product_image' => $product->image1, 
             ]);
         }
 
-        // Retrieve the entire cart for the current user
         $cart = CartItem::where('user_id', $user->id)->with('product')->get();
 
-        // Calculate the totalamount
         $totalamount = $cart->sum(function ($item) {
             return $item->quantity * $item->product->price;
         });
@@ -142,36 +136,30 @@ class AppManager extends Controller
 
     public function showCartView()
     {
-        // Retrieve the entire cart for the current user
         $user = Auth::user();
         $cart = CartItem::where('user_id', $user->id)->with('product')->get();
 
-        // Calculate the total amount
         $totalamount = $cart->sum(function ($item) {
             return $item->quantity * $item->product->price;
         });
 
-        // Return the cart view with the cart and totalamount data
         return view('include.store.cart', compact('cart', 'totalamount'));
     }
 
     public function updatedCart(Request $request)
     {
-        // Find the product
         $product = Product::find($request->input('product_id'));
-        // Find the current user
+ 
         $user = Auth::user();
 
-        // Find an existing cart item for the current user and the specified product
         $cartItem = CartItem::where([
             'user_id' => $user->id,
         ])->first();
 
         if ($cartItem) {
-            // If the item already exists, update the quantity
             $cartItem->update(['quantity' => $request->input('quantity', $cartItem->quantity)]);
-        } else {
-            // If the item doesn't exist, create a new cart item
+        } 
+        else {
             $cartItem = CartItem::create([
                 'user_id' => $user->id,
                 'product_id' => $product->id,
@@ -180,14 +168,12 @@ class AppManager extends Controller
                 'user_email' => $user->email,
                 'product_name' => $product->name,
                 'product_price' => $product->price,
-                'product_image' => $product->image1, // Adjust this based on your product image logic
+                'product_image' => $product->image1,
             ]);
         }
 
-        // Retrieve the entire cart for the current user
         $cart = CartItem::where('user_id', $user->id)->with('product')->get();
 
-        // Calculate the totalamount
         $totalamount = $cart->sum(function ($item) {
             return $item->quantity * $item->product->price;
         });
@@ -198,27 +184,22 @@ class AppManager extends Controller
 
     public function updateCart(Request $request)
     {
-        // Validate the request
         $request->validate([
             'items.*' => 'required|integer|min:1|max:50',
         ]);
 
-        // Loop through the submitted quantities and update the cart items
         foreach ($request->input('items') as $itemId => $quantity) {
             $cartItem = CartItem::findOrFail($itemId);
             $cartItem->update(['quantity' => $quantity]);
         }
 
-        // Retrieve the entire cart for the current user
         $user = Auth::user();
         $cart = CartItem::where('user_id', $user->id)->with('product')->get();
 
-        // Calculate the total amount
         $totalamount = $cart->sum(function ($item) {
             return $item->quantity * $item->product->price;
         });
 
-        // Redirect back to the cart view with updated data
         return redirect()->route('updatedcart');
     }
 
@@ -226,53 +207,66 @@ class AppManager extends Controller
     {
         $user = Auth::user();
 
-        // Delete all cart items for the current user
         CartItem::where('user_id', $user->id)->delete();
 
-        // Redirect to the cart view
         return redirect()->route('cartview')->with('success', 'All items dropped from the cart.');
     }
 
     public function orderdetails()
     {
-        // Retrieve the entire cart for the current user
         $user = Auth::user();
         $cart = CartItem::where('user_id', $user->id)->with('product')->get();
 
-        // Calculate the total amount
         $totalamount = $cart->sum(function ($item) {
             return $item->quantity * $item->product->price;
         });
 
-        // Assuming you have a shipping fee logic, you can adjust this accordingly
         $shippingFee = 200;
 
-        // Return the orderdetails view with the cart and totalamount data
         return view('.include.order.orderdetails', compact('cart', 'totalamount', 'shippingFee'));
     }
 
     public function placeOrder(Request $request)
     {
         $user = Auth::user();
-
         $order_id = 'ORD' . now()->timestamp . $user->id;
+        $shippingFee = 200;
 
-        $data['user_id'] = $user->id; 
-        $data['name'] = $request->name;
-        $data['phone'] = $request->phone;
-        $data['email'] = $request->email;
-        $data['address'] = $request->address;
-        $data['city'] = $request->city;
-        $data['state'] = $request->state;
-        $data['pin'] = $request->pin;
-        $data['payment_method'] = $request->payment_method;
-        $data['order_id'] = $order_id;
-            
-        DB::transaction(function () use ($data, $user) {
-            $order = Order::create($data);
-  
-            CartItem::where('user_id', $user->id)->delete();
-        });
+        $billingDetails = [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'pin' => $request->pin,
+            'payment_method' => $request->payment_method,
+            'order_id' => $order_id,
+        ];
+
+        $cartItems = CartItem::where('user_id', $user->id)->get();
+
+        $totalAmount = 0;
+
+        foreach ($cartItems as $cartItem) {
+            $order = new Order;
+            $order->user_id = $user->id;
+            $order->fill($billingDetails);
+            $order->product_id = $cartItem->product_id;
+            $order->product_name = $cartItem->product_name;
+            $order->quantity = $cartItem->quantity;
+            $order->subtotal = $cartItem->quantity * $cartItem->product->price;
+            $totalAmount += $order->subtotal;
+            $order->delivery_status = 'processing';
+            $order->save();
+        }
+
+        $totalAmount += $shippingFee;
+
+        Order::where('order_id', $order_id)->update(['total_amount' => $totalAmount]);
+
+        //delete existing items from the cart
+        CartItem::where('user_id', $user->id)->delete();
 
         return redirect(route('orders'))->with('success', 'Order placed successfully.');
     }

@@ -1,5 +1,5 @@
 @extends('homepage')
-@section('title', 'Login')
+@section('title', 'Login - Jackfruit Mania')
 @section('content')
 <div class="blur-background"></div>
 <div class="wrapper">
