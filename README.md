@@ -20,7 +20,7 @@ Make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/krishnarajav/E-commerce-Website-using-Laravel---The-PHP-Framework-.git
+   git clone https://github.com/krishnarajav/E-commerce-Website-using-Laravel.git
 
 2. Open the project on your IDE (VS Code/PHPStorm) and open terminal.
 
